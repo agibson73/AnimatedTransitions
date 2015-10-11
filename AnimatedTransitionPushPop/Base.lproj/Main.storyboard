@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6211" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="LgC-iS-Id1">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6204"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="AnimatedTransitionPushPop" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -15,11 +15,93 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0DV-kD-bO4">
+                                <rect key="frame" x="266" y="155" width="69" height="30"/>
+                                <animations/>
+                                <state key="normal" title="Spin Push"/>
+                                <connections>
+                                    <action selector="spinPushDidPress:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Xwz-ZX-HVg"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Okq-Xm-ev4">
+                                <rect key="frame" x="251" y="285" width="99" height="30"/>
+                                <animations/>
+                                <state key="normal" title="Pop Transition"/>
+                                <connections>
+                                    <action selector="popTransitionDidPress:" destination="BYZ-38-t0r" eventType="touchUpInside" id="msO-JZ-2ut"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" red="0.99607843139999996" green="0.30588235289999999" blue="0.16078431369999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="0DV-kD-bO4" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="91" id="AqX-Kp-cWo"/>
+                            <constraint firstItem="0DV-kD-bO4" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="VK7-87-f17"/>
+                            <constraint firstItem="Okq-Xm-ev4" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="eqX-WQ-UHJ"/>
+                            <constraint firstItem="Okq-Xm-ev4" firstAttribute="top" secondItem="0DV-kD-bO4" secondAttribute="bottom" constant="100" id="yuq-oc-LZt"/>
+                        </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="Kgy-7O-WoO"/>
+                    <connections>
+                        <segue destination="bw0-n8-oM5" kind="presentation" identifier="seg" id="sd4-CI-FA7"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="1092" y="325"/>
+        </scene>
+        <!--SecondVC View Controller-->
+        <scene sceneID="a5v-2y-S3H">
+            <objects>
+                <viewController id="bw0-n8-oM5" customClass="SecondVCViewController" customModule="AnimatedTransitionPushPop" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="cFz-5x-P3z"/>
+                        <viewControllerLayoutGuide type="bottom" id="A4K-wl-Olp"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="P00-Dg-rGD">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e2j-p5-alo">
+                                <rect key="frame" x="273" y="120" width="54" height="30"/>
+                                <animations/>
+                                <state key="normal" title="Dismiss"/>
+                                <connections>
+                                    <action selector="dismissDidPress:" destination="bw0-n8-oM5" eventType="touchUpInside" id="oym-RL-KXG"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="e2j-p5-alo" firstAttribute="top" secondItem="cFz-5x-P3z" secondAttribute="bottom" constant="100" id="2KI-SY-DrD"/>
+                            <constraint firstItem="e2j-p5-alo" firstAttribute="centerX" secondItem="P00-Dg-rGD" secondAttribute="centerX" id="g3n-Rb-AkX"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Bya-9V-VfK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1726" y="325"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="6zP-2z-K5e">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="LgC-iS-Id1" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Jb0-IM-Nsu">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <animations/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="9QU-Yz-FPc"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Wtg-86-8pF" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="327" y="985"/>
         </scene>
     </scenes>
 </document>

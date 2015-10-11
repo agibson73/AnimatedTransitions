@@ -9,6 +9,9 @@
 import UIKit
 
 class ViewController: UIViewController {
+    
+    var spinManager = PushSpinTransition()
+    var popManager = PopCustomTransition()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,6 +23,31 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
+
+    @IBAction func spinPushDidPress(sender: AnyObject) {
+        self.performSegueWithIdentifier("seg", sender: "spinPush")
+    }
+    
+    
+    @IBAction func popTransitionDidPress(sender: AnyObject) {
+        
+        self.performSegueWithIdentifier("seg", sender: "pop")
+    }
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        let type = sender as? String
+        if type == "spinPush"{
+            let dvc = segue.destinationViewController as! SecondVCViewController
+            dvc.transitioningDelegate = spinManager
+        
+        }
+        else{
+            // time to pop
+            let dvc = segue.destinationViewController as! SecondVCViewController
+            
+            dvc.transitioningDelegate = popManager
+        }
+        
+    }
 
 }
 
