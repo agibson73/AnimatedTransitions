@@ -13,7 +13,7 @@ public class PopCustomTransition: NSObject,UIViewControllerTransitioningDelegate
     
     var isPresenting = true
     var duration = 0.8
-    var offScreenRight = true
+
     
     public func animateTransition(transitionContext: UIViewControllerContextTransitioning) {
         let container = transitionContext.containerView()!
@@ -51,6 +51,7 @@ public class PopCustomTransition: NSObject,UIViewControllerTransitioningDelegate
                 
                 
                 toView.transform = CGAffineTransformIdentity
+                fromView.transform = CGAffineTransformMakeRotation(-π/2)
             
                 }, completion: { finished in
                     transitionContext.completeTransition(true)  
@@ -65,6 +66,9 @@ public class PopCustomTransition: NSObject,UIViewControllerTransitioningDelegate
             
             let offScreenRight = CGAffineTransformMakeRotation(π/2)
             
+            
+            
+            toView.transform = CGAffineTransformMakeRotation(-π/2)
             
             container.addSubview(toView)
             container.addSubview(fromView)
@@ -83,6 +87,7 @@ public class PopCustomTransition: NSObject,UIViewControllerTransitioningDelegate
             UIView.animateWithDuration(duration, delay: 0.0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.8, options: UIViewAnimationOptions.CurveEaseOut , animations: {
                 
                fromView.transform = offScreenRight
+                toView.transform = CGAffineTransformIdentity
 
                 }, completion: { finished in
                     transitionContext.completeTransition(true)

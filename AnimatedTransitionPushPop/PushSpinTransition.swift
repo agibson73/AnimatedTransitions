@@ -13,7 +13,7 @@ public class PushSpinTransition: NSObject,UIViewControllerTransitioningDelegate,
     
     var isPresenting = true
     var duration = 0.4
-    var offScreenRight = true
+   
     
     public func animateTransition(transitionContext: UIViewControllerContextTransitioning) {
         let container = transitionContext.containerView()!
