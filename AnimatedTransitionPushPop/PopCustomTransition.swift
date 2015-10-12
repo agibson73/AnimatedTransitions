@@ -24,18 +24,24 @@ public class PopCustomTransition: NSObject,UIViewControllerTransitioningDelegate
         let π : CGFloat = CGFloat(M_PI)
         
         
+        container.translatesAutoresizingMaskIntoConstraints = false
         
         
+        // refresh
+        toView.transform = CGAffineTransformIdentity
+        fromView.transform = CGAffineTransformIdentity
         
         
         if isPresenting {
             
-           
+   
             
             let offScreenRight = CGAffineTransformMakeRotation(π/2)
             toView.transform = offScreenRight
             toView.layer.anchorPoint = CGPoint(x:0, y:0)
             fromView.layer.anchorPoint = CGPoint(x:0, y:0)
+            
+            
             
             toView.layer.position = CGPoint(x:0, y:0)
             fromView.layer.position = CGPoint(x:0, y:0)
@@ -67,9 +73,7 @@ public class PopCustomTransition: NSObject,UIViewControllerTransitioningDelegate
             let offScreenRight = CGAffineTransformMakeRotation(π/2)
             
             
-            
-            toView.transform = CGAffineTransformMakeRotation(-π/2)
-            
+
             container.addSubview(toView)
             container.addSubview(fromView)
             
@@ -77,19 +81,22 @@ public class PopCustomTransition: NSObject,UIViewControllerTransitioningDelegate
             fromView.layer.anchorPoint = CGPoint(x:0, y:0)
             
             toView.layer.position = CGPoint(x:0, y:0)
+    
             fromView.layer.position = CGPoint(x:0, y:0)
            
-            
-          
+
+            toView.transform = CGAffineTransformMakeRotation(-π/2)
             
             let duration = self.transitionDuration(transitionContext)
             
             UIView.animateWithDuration(duration, delay: 0.0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.8, options: UIViewAnimationOptions.CurveEaseOut , animations: {
                 
                fromView.transform = offScreenRight
+                //toViewSnapshot.transform = CGAffineTransformIdentity
                 toView.transform = CGAffineTransformIdentity
 
                 }, completion: { finished in
+                    
                     transitionContext.completeTransition(true)
             })
             
